@@ -37,6 +37,30 @@ app.use(express.urlencoded({extended:true,limit:"16kb"}))
 app.use(express.static("public"))
 app.use(cookieParser())
 
+//routes import
+
+import userRouter from './routes/user.routes.js'
+
+
+
+//routes declaration mtlab koi bhi user type krega to hum control dedenege userRouter ko
+//fir ye user.routes.js mai chlajyega.
+app.use("/users",userRouter)
+
+//agr api hai to
+//mtlab agr hum /api/v1/usersye gye to userRouter pe jyenge
+//jo activate ho jyega fir uske aage /register lgyenge to
+//registeruser call hojyega.or registeruser pe jaise jyenge
+//to eska definition user.controller se aarhi hai.to
+//agr sb shi hai to response miljna chiye ok
+app.use("/api/v1/users",userRouter)
+
+
+
+// http://localhost:8000/users/register
+// http://localhost:8000/users/login
+// http://localhost:8000/api/v1/users/register
+
 
 
 export { app }  
